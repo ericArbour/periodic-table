@@ -26,14 +26,6 @@
 
 <script>
 export default {
-  name: 'TableHeader'
-}
+  name: "TableHeader"
+};
 </script>
-
-<style scoped>
-table thead tr td {
-  border: 1px solid black;
-  min-width: 2vmin;
-}
-</style>
-

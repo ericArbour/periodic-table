@@ -31,8 +31,7 @@ import PeriodSix from "./rows/PeriodSix.vue";
 import PeriodSeven from "./rows/PeriodSeven.vue";
 import Lanthanoids from "./rows/Lanthanoids.vue";
 import Actinoids from "./rows/Actinoids.vue";
-
-console.log(elements);
+import EventBus from "../utilities/event-bus";
 
 export default {
   name: "PeriodicTable",
@@ -52,6 +51,11 @@ export default {
     return {
       elements
     };
+  },
+  mounted: function() {
+    EventBus.$on("test", function(payLoad) {
+      console.log(payLoad);
+    });
   }
 };
 </script>
