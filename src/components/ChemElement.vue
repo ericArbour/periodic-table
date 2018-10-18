@@ -12,8 +12,6 @@
 </template>
 
 <script>
-import EventBus from "../utilities/event-bus";
-
 export default {
   name: "ChemElement",
   props: {
@@ -21,7 +19,7 @@ export default {
   },
   methods: {
     onMouseOver() {
-      EventBus.$emit("test", this.$props.element);
+      this.$store.dispatch("setSelectedElement", this.element);
     }
   }
 };

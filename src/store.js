@@ -4,7 +4,17 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {}
+  state: {
+    selectedElement: null
+  },
+  mutations: {
+    setSelectedElement(state, element) {
+      state.selectedElement = element;
+    }
+  },
+  actions: {
+    setSelectedElement({ commit }, element) {
+      commit("setSelectedElement", element);
+    }
+  }
 });
