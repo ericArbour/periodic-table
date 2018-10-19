@@ -3,7 +3,6 @@
     <th>2</th>
     <chem-element :element="elements.Lithium"/>
     <chem-element :element="elements.Beryllium"/>
-    <td colspan="10" />
     <chem-element :element="elements.Boron"/>
     <chem-element :element="elements.Carbon"/>
     <chem-element :element="elements.Nitrogen"/>
@@ -24,5 +23,5 @@ export default {
   props: {
     elements: Object
   }
-}
+};
 </script>

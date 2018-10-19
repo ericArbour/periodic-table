@@ -1,11 +1,13 @@
 <template>
   <div class="periodic-table-container">
     <h1>The Periodic Table</h1>
-    {{ selectedElement.name }}
     <table>
       <table-header />
       <tbody>
-        <period-one :elements="elements" />
+        <period-one 
+          :elements="elements" 
+          :selectedElement="selectedElement"
+        />
         <period-two :elements="elements" />
         <period-three :elements="elements" />
         <period-four :elements="elements" />

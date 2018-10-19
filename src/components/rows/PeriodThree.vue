@@ -3,7 +3,6 @@
     <th>3</th>
     <chem-element :element="elements.Sodium"/>
     <chem-element :element="elements.Magnesium"/>
-    <td colspan="10" />
     <chem-element :element="elements.Aluminium"/>
     <chem-element :element="elements.Silicon"/>
     <chem-element :element="elements.Phosphorus"/>
@@ -24,5 +23,5 @@ export default {
   props: {
     elements: Object
   }
-}
+};
 </script>

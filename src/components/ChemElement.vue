@@ -1,5 +1,5 @@
 <template>
-  <td @mouseover="onMouseOver">
+  <td @mouseover="onMouseOver" @mouseleave="onMouseLeave">
     <div class="atomic-number">
       {{ element.number }}
     </div>
@@ -20,6 +20,9 @@ export default {
   methods: {
     onMouseOver() {
       this.$store.dispatch("setSelectedElement", this.element);
+    },
+    onMouseLeave() {
+      this.$store.dispatch("setSelectedElement", null);
     }
   }
 };
