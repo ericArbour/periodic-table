@@ -1,5 +1,5 @@
 <template>
-  <td colspan="3" rowspan="3">
+  <td colspan="3" rowspan="3" :style="backgroundColor">
     <div class="atomic-number">
       {{ number }}
     </div>
@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import chroma from "chroma-js";
+
 export default {
   name: "SelectedElement",
   props: {
@@ -33,11 +35,23 @@ export default {
       return this.selectedElement
         ? this.selectedElement.atomic_mass
         : "Atomic Mass";
-    }
-  },
-  watch: {
-    selectedElement: function(obj) {
-      console.log(obj);
+    },
+    backgroundColor: function() {
+      const { selectedElement } = this;
+      const { cpkHexColor } = selectedElement || {};
+      const backgroundColor = cpkHexColor ? chroma(cpkHexColor).hex() : "#fff";
+
+      const [h, s, l] = chroma(backgroundColor).hsl();
+
+      const newH = !isNaN(h) && (h + 180 > 360 ? h - 180 : h + 180);
+
+      const color = newH ? chroma.hsl(newH, s, l).hex() : "#000";
+      console.log(color);
+
+      return {
+        backgroundColor,
+        color
+      };
     }
   }
 };
