@@ -1,0 +1,33 @@
+html {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  background-color: #000;
+  color: #fff;
+}
+
+.alkali-metals {
+  background-color: #ffdfb0 !important;
+}
+.alkaline-earth-metals {
+  background-color: #ffcfc8 !important;
+}
+.lanthanoids {
+  background-color: #f8bcff !important;
+}
+.actinoids {
+  background-color: #c2c1e8 !important;
+}
+.transition-metals {
+  background-color: #b0f2ff !important;
+}
+.post-transition-metals {
+  background-color: #a2cfff !important;
+}
+.metalloids {
+  background-color: #bbffe7 !important;
+}
+.other-nonmetals {
+  background-color: #caffaf !important;
+}
+.noble-gases {
+  background-color: #e8e1b5 !important;
+}

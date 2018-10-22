@@ -1,5 +1,9 @@
 <template>
-  <td @mouseover="onMouseOver" @mouseleave="onMouseLeave">
+  <td 
+    :class="elementCategory"
+    @mouseover="onMouseOver"
+    @mouseleave="onMouseLeave"
+  >
     <div class="atomic-number">
       {{ element.number }}
     </div>
@@ -15,7 +19,29 @@
 export default {
   name: "ChemElement",
   props: {
-    element: Object
+    element: {
+      type: Object,
+      required: true
+    }
+  },
+  computed: {
+    elementCategory() {
+      const { category } = this.element;
+      return {
+        "alkali-metals": category === "alkali metal",
+        "alkaline-earth-metals": category === "alkaline earth metal",
+        lanthanoids: category === "lanthanide",
+        actinoids: category === "actinide",
+        "transition-metals": category === "transition metal",
+        "post-transition-metals": category === "post-transition metal",
+        metalloids: category === "metalloid",
+        "other-nonmetals": [
+          "diatomic nonmetal",
+          "polyatomic nonmetal"
+        ].includes(category),
+        "noble-gases": category === "noble gas"
+      };
+    }
   },
   methods: {
     onMouseOver() {
@@ -33,8 +59,10 @@ td {
   width: 8vmin;
   height: 8vmin;
   font-size: 1.2vmin;
-  border: 1px solid black;
+  border: 1px solid #fff;
   position: relative;
+  color: #000;
+  background-color: #eee;
 }
 .atomic-number {
   position: absolute;

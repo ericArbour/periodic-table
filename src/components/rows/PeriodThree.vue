@@ -21,7 +21,10 @@ export default {
     ChemElement
   },
   props: {
-    elements: Object
+    elements: {
+      type: Object,
+      required: true
+    }
   }
 };
 </script>

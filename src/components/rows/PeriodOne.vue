@@ -4,7 +4,7 @@
     <chem-element :element="elements.Hydrogen"/>
     <td colspan="1" />
     <selected-element :selectedElement="selectedElement" />
-    <td colspan="7" rowspan="3" />
+    <element-categories :selectedElement="selectedElement" />
     <td colspan="5" />
     <chem-element :element="elements.Helium"/>
   </tr>
@@ -13,16 +13,23 @@
 <script>
 import ChemElement from "../ChemElement.vue";
 import SelectedElement from "../dashboard/SelectedElement.vue";
+import ElementCategories from "../dashboard/ElementCategories.vue";
 
 export default {
   name: "PeriodOne",
   components: {
     ChemElement,
-    SelectedElement
+    SelectedElement,
+    ElementCategories
   },
   props: {
-    elements: Object,
-    selectedElement: Object
+    elements: {
+      type: Object,
+      required: true
+    },
+    selectedElement: {
+      type: Object
+    }
   }
 };
 </script>
