@@ -5,42 +5,48 @@
       <div class="group-container metals-group">
         <h3>Metals</h3>
         <ul>
-          <li 
-            :class="alkaliMetalsActive"
+          <element-category 
+            :categories="alkaliMetal"
+            :selectedElement="selectedElement"
             class="category alkali-metals"
           >
             Alkali Metals
-          </li>
-          <li 
-            :class="alkalineEarthMetalsActive"
+          </element-category>
+          <element-category 
+            :categories="alkalineEarthMetal"
+            :selectedElement="selectedElement"
             class="category alkaline-earth-metals"
           >
             Alkaline Earth Metals
-          </li>
-          <li
-            :class="lanthanoidsActive"
+          </element-category>
+          <element-category 
+            :categories="lanthanide"
+            :selectedElement="selectedElement" 
             class="category lanthanoids"
           >
             Lanthanoids
-          </li>
-          <li
-            :class="actinoidsActive"
+          </element-category>
+          <element-category 
+            :categories="actinide"
+            :selectedElement="selectedElement"
             class="category actinoids"
           >
             Actinoids
-          </li>
-          <li
-            :class="transitionMetalsActive"
+          </element-category>
+          <element-category 
+            :categories="transitionMetal"
+            :selectedElement="selectedElement" 
             class="category transition-metals"
           >
             Transition Metals
-          </li>
-          <li 
-            :class="postTransitionMetalsActive"
+          </element-category>
+          <element-category 
+            :categories="postTransitionMetal"
+            :selectedElement="selectedElement" 
             class="category post-transition-metals"
           >
             Post-Transition Metals
-          </li>
+          </element-category>
         </ul>
       </div>
       <div class="group-container metalloids-group metalloids">
@@ -58,8 +64,20 @@
       <div class="group-container nonmetals-group">
         <h3>Nonmetals</h3>
         <ul>
-          <li class="category other-nonmetals">Other Nonmetals</li>
-          <li class="category noble-gases">Noble Gases</li>
+          <element-category 
+            :categories="otherNonmetal"
+            :selectedElement="selectedElement" 
+            class="category other-nonmetals"
+          >
+            Other Nonmetals
+          </element-category>
+          <element-category 
+            :categories="nobleGas"
+            :selectedElement="selectedElement" 
+            class="category noble-gases"
+          >
+            Noble Gases
+          </element-category>
         </ul>
       </div>
     </div>
@@ -67,48 +85,41 @@
 </template>
 
 <script>
+import ElementCategory from "./ElementCategory";
+import {
+  ALKALI_METAL,
+  ALKALINE_EARTH_METAL,
+  LANTHANIDE,
+  ACTINIDE,
+  TRANSITION_METAL,
+  POST_TRANSITION_METAL,
+  METALLOID,
+  DIATOMIC_NONMETAL,
+  POLYATOMIC_NONMETAL,
+  NOBLE_GAS
+} from "../../constants";
+
 export default {
   name: "ElementCategories",
+  components: {
+    ElementCategory
+  },
+  data: function() {
+    return {
+      alkaliMetal: [ALKALI_METAL],
+      alkalineEarthMetal: [ALKALINE_EARTH_METAL],
+      lanthanide: [LANTHANIDE],
+      actinide: [ACTINIDE],
+      transitionMetal: [TRANSITION_METAL],
+      postTransitionMetal: [POST_TRANSITION_METAL],
+      metalloid: [METALLOID],
+      otherNonmetal: [DIATOMIC_NONMETAL, POLYATOMIC_NONMETAL],
+      nobleGas: [NOBLE_GAS]
+    };
+  },
   props: {
     selectedElement: {
       type: Object
-    }
-  },
-  computed: {
-    alkaliMetalsActive() {
-      return {
-        active: false
-      };
-    },
-    alkalineEarthMetalsActive() {
-      return {
-        active: false
-      };
-    },
-    lanthanoidsActive() {
-      return {
-        active: false
-      };
-    },
-    actinoidsActive() {
-      return {
-        active: false
-      };
-    },
-    transitionMetalsActive() {
-      return {
-        active: false
-      };
-    },
-    postTransitionMetalsActive() {
-      return {
-        active: false
-      };
-    }
-  },
-  watch: {
-    selectedElement(test) {
-      console.log(test);
     }
   }
 };

@@ -1,0 +1,20 @@
+export const ALKALI_METALS_CLASS = "alkali-metals";
+export const ALKALINE_EARTH_METALS_CLASS = "alkaline-earth-metals";
+export const LANTHANOIDS_CLASS = "lanthanoids";
+export const ACTINOIDS_CLASS = "actinoids";
+export const TRANSITION_METALS_CLASS = "transition-metals";
+export const POST_TRANSITION_METALS_CLASS = "post-transition-metals";
+export const METALLOIDS_CLASS = "metalloids";
+export const OTHER_NONMETALS_CLASS = "other-nonmetals";
+export const NOBLE_GASES_CLASS = "noble-gases";
+
+export const ALKALI_METAL = "alkali metal";
+export const ALKALINE_EARTH_METAL = "alkaline earth metal";
+export const LANTHANIDE = "lanthanide";
+export const ACTINIDE = "actinide";
+export const TRANSITION_METAL = "transition metal";
+export const POST_TRANSITION_METAL = "post-transition metal";
+export const METALLOID = "metalloid";
+export const DIATOMIC_NONMETAL = "diatomic nonmetal";
+export const POLYATOMIC_NONMETAL = "polyatomic nonmetal";
+export const NOBLE_GAS = "noble gas";

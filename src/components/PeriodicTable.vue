@@ -4,10 +4,7 @@
     <table>
       <table-header />
       <tbody>
-        <period-one 
-          :elements="elements" 
-          :selectedElement="selectedElement"
-        />
+        <period-one :elements="elements" />
         <period-two :elements="elements" />
         <period-three :elements="elements" />
         <period-four :elements="elements" />
@@ -23,7 +20,6 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
 import elements from "../data/elements";
 import TableHeader from "./TableHeader.vue";
 import PeriodOne from "./rows/PeriodOne.vue";
@@ -54,9 +50,6 @@ export default {
     return {
       elements
     };
-  },
-  computed: {
-    ...mapState(["selectedElement"])
   }
 };
 </script>

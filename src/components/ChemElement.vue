@@ -16,6 +16,28 @@
 </template>
 
 <script>
+import {
+  ALKALI_METALS_CLASS,
+  ALKALI_METAL,
+  ALKALINE_EARTH_METALS_CLASS,
+  ALKALINE_EARTH_METAL,
+  LANTHANOIDS_CLASS,
+  LANTHANIDE,
+  ACTINOIDS_CLASS,
+  ACTINIDE,
+  TRANSITION_METALS_CLASS,
+  TRANSITION_METAL,
+  POST_TRANSITION_METALS_CLASS,
+  POST_TRANSITION_METAL,
+  METALLOIDS_CLASS,
+  METALLOID,
+  OTHER_NONMETALS_CLASS,
+  DIATOMIC_NONMETAL,
+  POLYATOMIC_NONMETAL,
+  NOBLE_GASES_CLASS,
+  NOBLE_GAS
+} from "../constants";
+
 export default {
   name: "ChemElement",
   props: {
@@ -28,18 +50,18 @@ export default {
     elementCategory() {
       const { category } = this.element;
       return {
-        "alkali-metals": category === "alkali metal",
-        "alkaline-earth-metals": category === "alkaline earth metal",
-        lanthanoids: category === "lanthanide",
-        actinoids: category === "actinide",
-        "transition-metals": category === "transition metal",
-        "post-transition-metals": category === "post-transition metal",
-        metalloids: category === "metalloid",
-        "other-nonmetals": [
-          "diatomic nonmetal",
-          "polyatomic nonmetal"
+        [ALKALI_METALS_CLASS]: category === ALKALI_METAL,
+        [ALKALINE_EARTH_METALS_CLASS]: category === ALKALINE_EARTH_METAL,
+        [LANTHANOIDS_CLASS]: category === LANTHANIDE,
+        [ACTINOIDS_CLASS]: category === ACTINIDE,
+        [TRANSITION_METALS_CLASS]: category === TRANSITION_METAL,
+        [POST_TRANSITION_METALS_CLASS]: category === POST_TRANSITION_METAL,
+        [METALLOIDS_CLASS]: category === METALLOID,
+        [OTHER_NONMETALS_CLASS]: [
+          DIATOMIC_NONMETAL,
+          POLYATOMIC_NONMETAL
         ].includes(category),
-        "noble-gases": category === "noble gas"
+        [NOBLE_GASES_CLASS]: category === NOBLE_GAS
       };
     }
   },
