@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapGetters } from "vuex";
 import ChemElement from "../ChemElement.vue";
 import SelectedElement from "../dashboard/SelectedElement.vue";
 import ElementCategories from "../dashboard/ElementCategories.vue";
@@ -30,7 +30,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(["selectedElement"])
+    ...mapGetters(["selectedElement"])
   }
 };
 </script>

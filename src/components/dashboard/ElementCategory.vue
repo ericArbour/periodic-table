@@ -1,7 +1,11 @@
 <template>
-  <li :class="isActive">
+  <div 
+    :class="isActive"
+    class="category"
+    @mouseover="onMouseOver"
+  >
     <slot></slot>
-  </li>
+  </div>
 </template>
 
 <script>
@@ -23,13 +27,22 @@ export default {
         active: this.categories.includes(category)
       };
     }
+  },
+  methods: {
+    onMouseOver() {
+      this.$store.dispatch("setSelectedCategory", this.categories);
+    }
   }
 };
 </script>
 
 <style scoped>
+.category {
+  border: 1px solid #000;
+  margin: 2px;
+  padding: 2px;
+}
 .active {
-  font-weight: bold;
-  border: 2px solid black;
+  outline: 1px solid #222;
 }
 </style>

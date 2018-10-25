@@ -1,6 +1,6 @@
 <template>
   <td 
-    :class="elementCategory"
+    :class="[elementCategory, isInNotSelectedCategory]"
     @mouseover="onMouseOver"
     @mouseleave="onMouseLeave"
   >
@@ -16,6 +16,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 import {
   ALKALI_METALS_CLASS,
   ALKALI_METAL,
@@ -63,6 +65,14 @@ export default {
         ].includes(category),
         [NOBLE_GASES_CLASS]: category === NOBLE_GAS
       };
+    },
+    ...mapGetters(["selectedCategory"]),
+    isInNotSelectedCategory() {
+      const { category } = this.element;
+      return {
+        "is-not-in-selected-category":
+          this.selectedCategory && !this.selectedCategory.includes(category)
+      };
     }
   },
   methods: {
@@ -100,5 +110,8 @@ td h1 {
 }
 .symbol {
   font-size: 3vmin;
+}
+.is-not-in-selected-category {
+  background-color: #bbb !important;
 }
 </style>

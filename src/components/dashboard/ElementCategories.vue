@@ -1,55 +1,57 @@
 <template>
   <td colspan="7" rowspan="3">
     <h2>Categories</h2>
-    <div class="category-container">
+    <div class="category-container" @mouseleave="onMouseLeave">
       <div class="group-container metals-group">
         <h3>Metals</h3>
-        <ul>
-          <element-category 
-            :categories="alkaliMetal"
-            :selectedElement="selectedElement"
-            class="category alkali-metals"
-          >
-            Alkali Metals
-          </element-category>
-          <element-category 
-            :categories="alkalineEarthMetal"
-            :selectedElement="selectedElement"
-            class="category alkaline-earth-metals"
-          >
-            Alkaline Earth Metals
-          </element-category>
-          <element-category 
-            :categories="lanthanide"
-            :selectedElement="selectedElement" 
-            class="category lanthanoids"
-          >
-            Lanthanoids
-          </element-category>
-          <element-category 
-            :categories="actinide"
-            :selectedElement="selectedElement"
-            class="category actinoids"
-          >
-            Actinoids
-          </element-category>
-          <element-category 
-            :categories="transitionMetal"
-            :selectedElement="selectedElement" 
-            class="category transition-metals"
-          >
-            Transition Metals
-          </element-category>
-          <element-category 
-            :categories="postTransitionMetal"
-            :selectedElement="selectedElement" 
-            class="category post-transition-metals"
-          >
-            Post-Transition Metals
-          </element-category>
-        </ul>
+        <element-category 
+          :categories="alkaliMetal"
+          :selectedElement="selectedElement"
+          class="alkali-metals"
+        >
+          Alkali Metals
+        </element-category>
+        <element-category 
+          :categories="alkalineEarthMetal"
+          :selectedElement="selectedElement"
+          class="alkaline-earth-metals"
+        >
+          Alkaline Earth Metals
+        </element-category>
+        <element-category 
+          :categories="lanthanide"
+          :selectedElement="selectedElement" 
+          class="lanthanoids"
+        >
+          Lanthanoids
+        </element-category>
+        <element-category 
+          :categories="actinide"
+          :selectedElement="selectedElement"
+          class="actinoids"
+        >
+          Actinoids
+        </element-category>
+        <element-category 
+          :categories="transitionMetal"
+          :selectedElement="selectedElement" 
+          class="transition-metals"
+        >
+          Transition Metals
+        </element-category>
+        <element-category 
+          :categories="postTransitionMetal"
+          :selectedElement="selectedElement" 
+          class="post-transition-metals"
+        >
+          Post-Transition Metals
+        </element-category>
       </div>
-      <div class="group-container metalloids-group metalloids">
+      <element-category 
+        :categories="metalloid"
+        :selectedElement="selectedElement"
+        class="group-container metalloids-group metalloids"
+      >
         <h3>M</h3>
         <h3>e</h3>
         <h3>t</h3>
@@ -60,25 +62,23 @@
         <h3>i</h3>
         <h3>d</h3>
         <h3>s</h3>
-      </div>
+      </element-category>
       <div class="group-container nonmetals-group">
         <h3>Nonmetals</h3>
-        <ul>
-          <element-category 
-            :categories="otherNonmetal"
-            :selectedElement="selectedElement" 
-            class="category other-nonmetals"
-          >
-            Other Nonmetals
-          </element-category>
-          <element-category 
-            :categories="nobleGas"
-            :selectedElement="selectedElement" 
-            class="category noble-gases"
-          >
-            Noble Gases
-          </element-category>
-        </ul>
+        <element-category 
+          :categories="otherNonmetal"
+          :selectedElement="selectedElement" 
+          class="other-nonmetals"
+        >
+          Other Nonmetals
+        </element-category>
+        <element-category 
+          :categories="nobleGas"
+          :selectedElement="selectedElement" 
+          class="noble-gases"
+        >
+          Noble Gases
+        </element-category>
       </div>
     </div>
   </td>
@@ -121,6 +121,11 @@ export default {
     selectedElement: {
       type: Object
     }
+  },
+  methods: {
+    onMouseLeave() {
+      this.$store.dispatch("setSelectedCategory", null);
+    }
   }
 };
 </script>
@@ -140,20 +145,10 @@ td h3 {
 td h2 {
   margin: 0;
 }
-td ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
 .category-container {
   display: flex;
 }
 .group-container {
-  border: 1px solid #000;
-  margin: 2px;
-  padding: 2px;
-}
-.category {
   border: 1px solid #000;
   margin: 2px;
   padding: 2px;
