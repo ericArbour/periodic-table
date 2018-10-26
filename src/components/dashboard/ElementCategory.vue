@@ -1,6 +1,6 @@
 <template>
   <div 
-    :class="isActive"
+    :class="[isActive, isInNotSelectedCategory]"
     class="category"
     @mouseover="onMouseOver"
   >
@@ -9,6 +9,18 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
+function arraysEqual(a, b) {
+  if (a === b) return true;
+  if (a == null || b == null) return false;
+  if (a.length != b.length) return false;
+  for (var i = 0; i < a.length; ++i) {
+    if (a[i] !== b[i]) return false;
+  }
+  return true;
+}
+
 export default {
   name: "ElementCategory",
   props: {
@@ -25,6 +37,14 @@ export default {
       const { category } = this.selectedElement || {};
       return {
         active: this.categories.includes(category)
+      };
+    },
+    ...mapGetters(["selectedCategory"]),
+    isInNotSelectedCategory() {
+      return {
+        "is-not-in-selected-category":
+          this.selectedCategory &&
+          !arraysEqual(this.selectedCategory, this.categories)
       };
     }
   },

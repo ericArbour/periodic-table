@@ -1,6 +1,7 @@
 <template>
   <td 
     :class="[elementCategory, isInNotSelectedCategory]"
+    class="element"
     @mouseover="onMouseOver"
     @mouseleave="onMouseLeave"
   >
@@ -94,7 +95,6 @@ td {
   border: 1px solid #fff;
   position: relative;
   color: #000;
-  background-color: #eee;
 }
 .atomic-number {
   position: absolute;
@@ -110,8 +110,5 @@ td h1 {
 }
 .symbol {
   font-size: 3vmin;
-}
-.is-not-in-selected-category {
-  background-color: #bbb !important;
 }
 </style>

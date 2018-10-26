@@ -3,31 +3,36 @@ html {
   background-color: #000;
   color: #fff;
 }
-
+.element {
+  background-color: #eee;
+}
 .alkali-metals {
-  background-color: #ffdfb0 !important;
+  background-color: #ffdfb0;
 }
 .alkaline-earth-metals {
-  background-color: #ffcfc8 !important;
+  background-color: #ffcfc8;
 }
 .lanthanoids {
-  background-color: #f8bcff !important;
+  background-color: #f8bcff;
 }
 .actinoids {
-  background-color: #c2c1e8 !important;
+  background-color: #c2c1e8;
 }
 .transition-metals {
-  background-color: #b0f2ff !important;
+  background-color: #b0f2ff;
 }
 .post-transition-metals {
-  background-color: #a2cfff !important;
+  background-color: #a2cfff;
 }
 .metalloids {
-  background-color: #bbffe7 !important;
+  background-color: #bbffe7;
 }
 .other-nonmetals {
-  background-color: #caffaf !important;
+  background-color: #caffaf;
 }
 .noble-gases {
-  background-color: #e8e1b5 !important;
+  background-color: #e8e1b5;
+}
+.is-not-in-selected-category {
+  background-color: #bbb;
 }
