@@ -6,7 +6,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     selectedElement: null,
-    selectedCategory: null
+    selectedCategory: null,
+    temperature: 273
   },
   getters: {
     selectedElement: ({ selectedElement }) => {
@@ -14,6 +15,9 @@ export default new Vuex.Store({
     },
     selectedCategory: ({ selectedCategory }) => {
       return selectedCategory;
+    },
+    temperature: ({ temperature }) => {
+      return temperature;
     }
   },
   mutations: {
@@ -22,6 +26,9 @@ export default new Vuex.Store({
     },
     setSelectedCategory(state, category) {
       state.selectedCategory = category;
+    },
+    setTemperature(state, temperature) {
+      state.temperature = temperature;
     }
   },
   actions: {
@@ -30,6 +37,11 @@ export default new Vuex.Store({
     },
     setSelectedCategory({ commit }, category) {
       commit("setSelectedCategory", category);
+    },
+    setTemperature({ commit }, event = {}) {
+      const { value } = event.target || {};
+      const temp = value > 6000 ? 6000 : !value ? 0 : value;
+      commit("setTemperature", temp);
     }
   }
 });

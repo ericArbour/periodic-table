@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 import {
   ALKALI_METALS_CLASS,
@@ -50,6 +50,7 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(["selectedCategory, temperature"]),
     elementCategory() {
       const { category } = this.element;
       return {
@@ -67,7 +68,6 @@ export default {
         [NOBLE_GASES_CLASS]: category === NOBLE_GAS
       };
     },
-    ...mapGetters(["selectedCategory"]),
     isInNotSelectedCategory() {
       const { category } = this.element;
       return {
@@ -77,11 +77,12 @@ export default {
     }
   },
   methods: {
+    ...mapActions(["setSelectedElement"]),
     onMouseOver() {
-      this.$store.dispatch("setSelectedElement", this.element);
+      this.setSelectedElement(this.element);
     },
     onMouseLeave() {
-      this.$store.dispatch("setSelectedElement", null);
+      this.setSelectedElement(null);
     }
   }
 };

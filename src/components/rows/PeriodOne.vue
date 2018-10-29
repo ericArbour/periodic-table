@@ -5,7 +5,7 @@
     <td colspan="1" />
     <selected-element :selectedElement="selectedElement" />
     <element-categories :selectedElement="selectedElement" />
-    <td colspan="5" />
+    <temp-slider />
     <chem-element :element="elements.Helium"/>
   </tr>
 </template>
@@ -15,13 +15,15 @@ import { mapGetters } from "vuex";
 import ChemElement from "../ChemElement.vue";
 import SelectedElement from "../dashboard/SelectedElement.vue";
 import ElementCategories from "../dashboard/ElementCategories.vue";
+import TempSlider from "../dashboard/TempSlider.vue";
 
 export default {
   name: "PeriodOne",
   components: {
     ChemElement,
     SelectedElement,
-    ElementCategories
+    ElementCategories,
+    TempSlider
   },
   props: {
     elements: {

@@ -2,7 +2,7 @@
   <td colspan="7" rowspan="3">
     <h2>Categories</h2>
     <div class="category-container" @mouseleave="onMouseLeave">
-      <div class="group-container metals-group">
+      <category-group class="group-container metals-group">
         <h3>Metals</h3>
         <element-category 
           :categories="alkaliMetal"
@@ -46,7 +46,7 @@
         >
           Post-Transition Metals
         </element-category>
-      </div>
+      </category-group>
       <element-category 
         :categories="metalloid"
         :selectedElement="selectedElement"
@@ -63,7 +63,7 @@
         <h3>d</h3>
         <h3>s</h3>
       </element-category>
-      <div class="group-container nonmetals-group">
+      <category-group class="group-container nonmetals-group">
         <h3>Nonmetals</h3>
         <element-category 
           :categories="otherNonmetal"
@@ -79,13 +79,15 @@
         >
           Noble Gases
         </element-category>
-      </div>
+      </category-group>
     </div>
   </td>
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import ElementCategory from "./ElementCategory";
+import CategoryGroup from "./CategoryGroup";
 import {
   ALKALI_METAL,
   ALKALINE_EARTH_METAL,
@@ -102,7 +104,13 @@ import {
 export default {
   name: "ElementCategories",
   components: {
-    ElementCategory
+    ElementCategory,
+    CategoryGroup
+  },
+  props: {
+    selectedElement: {
+      type: Object
+    }
   },
   data: function() {
     return {
@@ -117,14 +125,10 @@ export default {
       nobleGas: [NOBLE_GAS]
     };
   },
-  props: {
-    selectedElement: {
-      type: Object
-    }
-  },
   methods: {
+    ...mapActions(["setSelectedCategory"]),
     onMouseLeave() {
-      this.$store.dispatch("setSelectedCategory", null);
+      this.setSelectedCategory(null);
     }
   }
 };
@@ -152,11 +156,5 @@ td h2 {
   border: 1px solid #000;
   margin: 2px;
   padding: 2px;
-}
-.metals-group {
-  background-color: #eef1ff;
-}
-.nonmetals-group {
-  background-color: #f2ffe7;
 }
 </style>

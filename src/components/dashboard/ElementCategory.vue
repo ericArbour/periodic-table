@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 function arraysEqual(a, b) {
   if (a === b) return true;
@@ -33,13 +33,13 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(["selectedCategory"]),
     isActive() {
       const { category } = this.selectedElement || {};
       return {
         active: this.categories.includes(category)
       };
     },
-    ...mapGetters(["selectedCategory"]),
     isInNotSelectedCategory() {
       return {
         "is-not-in-selected-category":
@@ -49,8 +49,9 @@ export default {
     }
   },
   methods: {
+    ...mapActions(["setSelectedCategory"]),
     onMouseOver() {
-      this.$store.dispatch("setSelectedCategory", this.categories);
+      this.setSelectedCategory(this.categories);
     }
   }
 };
