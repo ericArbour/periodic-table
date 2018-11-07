@@ -1,6 +1,6 @@
 <template>
   <td 
-    :class="[elementCategory, isInNotSelectedCategory]"
+    :class="[elementCategory, isInNotSelectedCategory, isTempActiveClass, phase]"
     class="element"
     @mouseover="onMouseOver"
     @mouseleave="onMouseLeave"
@@ -50,7 +50,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["selectedCategory, temperature"]),
+    ...mapGetters(["selectedCategory", "temperature", "isTempActive"]),
     elementCategory() {
       const { category } = this.element;
       return {
@@ -74,6 +74,21 @@ export default {
         "is-not-in-selected-category":
           this.selectedCategory && !this.selectedCategory.includes(category)
       };
+    },
+    phase() {
+      const { boil, melt } = this.element;
+      if (!(boil && melt)) {
+        return null;
+      } else if (this.temperature >= boil) {
+        return { gas: true };
+      } else if (this.temperature <= melt) {
+        return { solid: true };
+      } else {
+        return { liquid: true };
+      }
+    },
+    isTempActiveClass() {
+      return { "is-temp-active": this.isTempActive };
     }
   },
   methods: {
@@ -111,5 +126,18 @@ td h1 {
 }
 .symbol {
   font-size: 3vmin;
+}
+td.is-temp-active {
+  color: #fff;
+  background-color: grey;
+}
+td.is-temp-active.gas {
+  background-color: red;
+}
+td.is-temp-active.solid {
+  background-color: #000;
+}
+td.is-temp-active.liquid {
+  background-color: blue;
 }
 </style>

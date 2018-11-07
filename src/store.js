@@ -7,7 +7,8 @@ export default new Vuex.Store({
   state: {
     selectedElement: null,
     selectedCategory: null,
-    temperature: 273
+    temperature: 273,
+    isTempActive: false
   },
   getters: {
     selectedElement: ({ selectedElement }) => {
@@ -18,6 +19,9 @@ export default new Vuex.Store({
     },
     temperature: ({ temperature }) => {
       return temperature;
+    },
+    isTempActive: ({ isTempActive }) => {
+      return isTempActive;
     }
   },
   mutations: {
@@ -29,6 +33,9 @@ export default new Vuex.Store({
     },
     setTemperature(state, temperature) {
       state.temperature = temperature;
+    },
+    setIsTempActive(state, isTempActive) {
+      state.isTempActive = isTempActive;
     }
   },
   actions: {
@@ -42,6 +49,9 @@ export default new Vuex.Store({
       const { value } = event.target || {};
       const temp = value > 6000 ? 6000 : !value ? 0 : value;
       commit("setTemperature", temp);
+    },
+    setIsTempActive({ commit }, isTempActive) {
+      commit("setIsTempActive", isTempActive);
     }
   }
 });

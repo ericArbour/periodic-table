@@ -17,6 +17,8 @@
         max="6000"
         :value="temperature"
         @input="setTemperature"
+        @mousedown="onMouseDown"
+        @mouseup="onMouseUp"
         class="slider"
       />
     </div>
@@ -29,10 +31,16 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   name: "TempSlider",
   computed: {
-    ...mapGetters(["temperature"])
+    ...mapGetters(["temperature", "isTempActive"])
   },
   methods: {
-    ...mapActions(["setTemperature"])
+    ...mapActions(["setTemperature", "setIsTempActive"]),
+    onMouseDown() {
+      this.setIsTempActive(true);
+    },
+    onMouseUp() {
+      this.setIsTempActive(false);
+    }
   }
 };
 </script>
